@@ -1,0 +1,39 @@
+<!DOCTYPE html> <!-- Используется html 5 версии -->
+{% extends 'base.html' %}
+{% load static %}
+<html lang="ru"> <!-- Язык сайта - русский -->
+  <body>
+    <main>
+      {%block content%}
+      <title>{{ title }}</title>
+      <!-- класс py-5 создает отступы сверху и снизу блока -->
+      <div class="container py-5">
+        <h1>{{ index_header }}</h1>
+      {% for post in posts %}
+        <ul>
+          <li>
+            Автор: {{ post.author.get_full_name }}
+          </li>
+          <li>
+            Дата публикации: {{ post.pub_date|date:"d E Y" }}
+          </li>
+          <li>
+            Группа: {{ post.group.title }}
+          </li>
+        </ul>
+        <p>{{ post.text }}</p>
+        {% if post.group %}
+          <a href="/group/{{ post.group.slug }}">все записи группы</a>
+        {% endif %}
+        {% if not forloop.last %}<hr>{% endif %}
+      {% endfor %}
+        <!-- под последним постом нет линии -->
+      </div>
+      {%endblock%}
+    </main>
+    <!-- Использованы классы бустрапа: -->
+    <!-- border-top: создаёт тонкую линию сверху блока -->
+    <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
+    <!-- py-3: контент внутри размещается с отступом сверху и снизу -->
+  </body>
+</html>
