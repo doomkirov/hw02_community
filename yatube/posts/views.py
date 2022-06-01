@@ -18,7 +18,7 @@ def group_posts(request, slug):
     POSTS_ON_VIEW: int = 10
     group = get_object_or_404(Group, slug=slug)
     title = f'Записи сообщества {group.title}'
-    posts = group.posts.order.by('-pub_date')[:POSTS_ON_VIEW]
+    posts = group.posts.order_by('-pub_date')[:POSTS_ON_VIEW]
     context = {
         'group': group,
         'posts': posts,
