@@ -26,7 +26,7 @@ class Post(models.Model):
         Group,
         blank=True,
         null=True,
-        on_delete = models.DO_NOTHING,
+        on_delete=models.DO_NOTHING,
         related_name='posts'
     )
 
