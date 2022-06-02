@@ -33,6 +33,5 @@ class Post(models.Model):
     class Meta:
         ordering: tuple = ('-pub_date',)
 
-
     def __str__(self):
         return self.group.title

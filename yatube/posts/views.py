@@ -4,6 +4,7 @@ from .models import Group, Post
 
 POSTS_ON_VIEW: int = 10
 
+
 def index(request):
     template = 'posts/index.html'
     posts = Post.objects.all()[:POSTS_ON_VIEW]
