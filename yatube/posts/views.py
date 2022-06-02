@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Group, Post
 
 
+POSTS_ON_VIEW: int = 10
+
 def index(request):
-    POSTS_ON_VIEW: int = 10
     template = 'posts/index.html'
     posts = Post.objects.all()[:POSTS_ON_VIEW]
     title = 'Последние обновления на сайте'
@@ -15,7 +16,6 @@ def index(request):
 
 
 def group_posts(request, slug):
-    POSTS_ON_VIEW: int = 10
     group = get_object_or_404(Group, slug=slug)
     title = f'Записи сообщества {group.title}'
     posts = group.posts.order_by('-pub_date')[:POSTS_ON_VIEW]
